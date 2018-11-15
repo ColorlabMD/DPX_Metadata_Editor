@@ -15,7 +15,7 @@ libdpx is used for header reading. A couple changes to libdpx had to be made to 
 The following fields are calculated and increment when edited: frame position, timecode, keycode
 
 Keycode generation can be done using perf or frame counting. The dpx standard says offset in perfs but many users use frames.
-Kodak further complicated the issue as new 65mm film has 120 perfs per count and the dpx standard is only 2 digits (ascii characters). 
+Kodak further complicated the issue with 65mm film has 120 perfs per count and the dpx standard is only 2 digits (ascii characters). 
 Keycode format - 	mfg and gauge code - 1st digit manufacturer 0-orwo 1-agfa 2-kodak 3-fuji 2nd digit film gauge 0-35mm 1-16mm 2-65mm
 			Film type - emulsion code
 			prefix - 6digits 
