@@ -1,0 +1,2515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1029</width>
+    <height>785</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DPX Metadata Editor</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>218</y>
+      <width>985</width>
+      <height>443</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Generic File Header</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>349</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Industry Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>File Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>UserSize</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Generic Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Version</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="gfh_dittokey_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="gfh_usersize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="gfh_version_tf">
+         <property name="maxLength">
+          <number>8</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="gfh_genericsize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="gfh_imageoffset_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Magic number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="gfh_magic_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="gfh_magicstring_label">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="gfh_filesize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="gfh_industrysize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Image Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>DittoKey</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>40</y>
+        <width>20</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>455</x>
+        <y>60</y>
+        <width>491</width>
+        <height>235</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="GFH_UE">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="gfh_encryptkey_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Copyright</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Project</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>FileName</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="gfh_copyright_tf">
+         <property name="maxLength">
+          <number>200</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Creator</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="gfh_filename_tf">
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>EncryptKey</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="gfh_timedate_tf">
+         <property name="maxLength">
+          <number>24</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>TimeDate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="gfh_creator_tf">
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="gfh_project_tf">
+         <property name="maxLength">
+          <number>200</number>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QCheckBox" name="gfh_autofilename_cb">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Auto</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>Reserved</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="gfh_reserved_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Generic Image Header</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>301</width>
+        <height>156</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="gih_linesperelement_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>Orientation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Pixels Per Line</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="gih_orientation_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Number Of Elements</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Lines Per Element</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="gih_elementcount_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="gih_pixelsperline_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_28">
+         <property name="text">
+          <string>Reserved</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="gih_reserved_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>20</y>
+        <width>571</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>_Image Element</string>
+      </property>
+      <widget class="QComboBox" name="gih_element_box">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>20</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_104">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Element Number</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_description_tf">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>340</y>
+         <width>441</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1760</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_51">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>280</y>
+         <width>74</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Colorimetric</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="gih_transfers_label">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>250</y>
+         <width>341</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_50">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>340</y>
+         <width>70</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_bitsize_tf">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>310</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_102">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>310</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Bitsize</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_colormetric_tf">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>280</y>
+         <width>125</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="gih_colorimetric_label">
+       <property name="geometry">
+        <rect>
+         <x>228</x>
+         <y>280</y>
+         <width>341</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_101">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>225</y>
+         <width>64</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Descriptor</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="gih_descriptor_label">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>220</y>
+         <width>341</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_transfer_tf">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>250</y>
+         <width>125</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_103">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>255</y>
+         <width>52</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Transfer</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_descriptor_tf">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>220</y>
+         <width>125</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_34">
+       <property name="geometry">
+        <rect>
+         <x>51</x>
+         <y>60</y>
+         <width>55</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>DataSign</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_35">
+       <property name="geometry">
+        <rect>
+         <x>51</x>
+         <y>150</y>
+         <width>57</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>HighData</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_highquantity_tf">
+       <property name="geometry">
+        <rect>
+         <x>139</x>
+         <y>180</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_32">
+       <property name="geometry">
+        <rect>
+         <x>51</x>
+         <y>180</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>HighQuantity</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_highdata_tf">
+       <property name="geometry">
+        <rect>
+         <x>139</x>
+         <y>150</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_lowquantity_tf">
+       <property name="geometry">
+        <rect>
+         <x>139</x>
+         <y>120</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>51</x>
+         <y>90</y>
+         <width>54</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>LowData</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_33">
+       <property name="geometry">
+        <rect>
+         <x>51</x>
+         <y>120</y>
+         <width>77</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>LowQuantity</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_datasign_tf">
+       <property name="geometry">
+        <rect>
+         <x>139</x>
+         <y>60</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_lowdata_tf">
+       <property name="geometry">
+        <rect>
+         <x>139</x>
+         <y>90</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_packing_tf">
+       <property name="geometry">
+        <rect>
+         <x>424</x>
+         <y>60</y>
+         <width>76</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_42">
+       <property name="geometry">
+        <rect>
+         <x>291</x>
+         <y>60</y>
+         <width>48</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Packing</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_46">
+       <property name="geometry">
+        <rect>
+         <x>291</x>
+         <y>150</y>
+         <width>113</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>EndOfLinePadding</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_47">
+       <property name="geometry">
+        <rect>
+         <x>291</x>
+         <y>90</y>
+         <width>57</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Encoding</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_dataoffset_tf">
+       <property name="geometry">
+        <rect>
+         <x>424</x>
+         <y>120</y>
+         <width>76</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_41">
+       <property name="geometry">
+        <rect>
+         <x>291</x>
+         <y>120</y>
+         <width>67</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>DataOffset</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_eoipaddding_tf">
+       <property name="geometry">
+        <rect>
+         <x>424</x>
+         <y>180</y>
+         <width>76</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_39">
+       <property name="geometry">
+        <rect>
+         <x>291</x>
+         <y>180</y>
+         <width>125</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>EndOfImagePadding</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_encoding_tf">
+       <property name="geometry">
+        <rect>
+         <x>424</x>
+         <y>90</y>
+         <width>76</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="gih_eolpadding_tf">
+       <property name="geometry">
+        <rect>
+         <x>424</x>
+         <y>150</y>
+         <width>76</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>40</y>
+        <width>20</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="gih_orientation_label">
+      <property name="geometry">
+       <rect>
+        <x>157</x>
+        <y>18</y>
+        <width>163</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Generic Orientation Header</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>251</width>
+        <height>297</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="goh_yoriginalsize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_43">
+         <property name="text">
+          <string>X Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="l1">
+         <property name="text">
+          <string>X Center</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="goh_xoriginalsize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="goh_xcenter_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>Y Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_44">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="l12">
+         <property name="text">
+          <string>X Original Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="goh_yoffset_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="l3">
+         <property name="text">
+          <string>Y Original Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="l4">
+         <property name="text">
+          <string>Y Center</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="goh_ycenter_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="goh_xoffset_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="goh_xscannedsize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="goh_yscannedsize_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="l3_6">
+         <property name="text">
+          <string>Y Scanned Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="l12_7">
+         <property name="text">
+          <string>X Scanned Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Reserved</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="goh_reserved_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>30</y>
+        <width>631</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="2" column="0">
+        <widget class="QLabel" name="fdf">
+         <property name="text">
+          <string>Input Device Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_45">
+         <property name="text">
+          <string>TimeDate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="goh_inputdevice_tf">
+         <property name="maxLength">
+          <number>32</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_52">
+         <property name="text">
+          <string>FileName</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="goh_filename_tf">
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="goh_inputdevicesn_tf">
+         <property name="maxLength">
+          <number>32</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="goh_timedate_tf">
+         <property name="maxLength">
+          <number>24</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="s">
+         <property name="text">
+          <string>Input Device SN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_53">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_15">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>200</y>
+        <width>361</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_15">
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="goh_border0_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="f">
+         <property name="text">
+          <string>Border</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="goh__tf">
+         <property name="text">
+          <string>AspectRatio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="goh_border1_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="goh_border2_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="goh_aspectratio0_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLineEdit" name="goh_border3_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="goh_aspectratio1_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLabel" name="label_48">
+         <property name="text">
+          <string>ar[0]/ar[1]=</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="goh_aspect_label">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>30</y>
+        <width>20</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Industry Film Header</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_18">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>30</y>
+        <width>283</width>
+        <height>248</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_18">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="5" column="0">
+        <widget class="QLabel" name="l1_2">
+         <property name="text">
+          <string>Offset in Perfs/Frames</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="ifh_prefix_tf">
+         <property name="maxLength">
+          <number>6</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="l4_2">
+         <property name="text">
+          <string>Prefix</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="ifh_offset_tf">
+         <property name="maxLength">
+          <number>2</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="ifh_count_tf">
+         <property name="maxLength">
+          <number>4</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="l12_2">
+         <property name="text">
+          <string>Count</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="ifh_format_tf">
+         <property name="maxLength">
+          <number>32</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_37">
+         <property name="text">
+          <string>Film Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_106">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="ifh_filmtype_tf">
+         <property name="maxLength">
+          <number>2</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="l3_2">
+         <property name="text">
+          <string>Format</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_105">
+         <property name="text">
+          <string>Film Manufacturer ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="ifh_filmmanid_tf">
+         <property name="maxLength">
+          <number>2</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="setkeycode_btn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Set Keycode</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_19">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>30</y>
+        <width>421</width>
+        <height>270</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_19">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_110">
+         <property name="text">
+          <string>Slate Info</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="ifh_slate_tf">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="ifh_framepostion_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="l1_3">
+         <property name="text">
+          <string>Held Count</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="ifh_shutterangle_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="l3_3">
+         <property name="text">
+          <string>Frame ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_108">
+         <property name="text">
+          <string>Sequence Length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_107">
+         <property name="text">
+          <string>Frame Position</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_109">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="ifh_frameid_tf">
+         <property name="maxLength">
+          <number>32</number>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="l4_3">
+         <property name="text">
+          <string>Frame Rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="ifh_heldcount_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="ifh_framerate_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="ifh_sequencelength_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="l12_3">
+         <property name="text">
+          <string>Shutter Angle</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_38">
+         <property name="text">
+          <string>Reserved</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="ifh_reserved_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="Line" name="line_4">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>30</y>
+        <width>20</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Keycodelabel">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>320</y>
+        <width>191</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l3_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>318</y>
+        <width>114</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Current Keycode</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Industry Television Header</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_21">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>435</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_21">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>HorzSampleRate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>FrameRate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="ith_fieldnumber_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="l12_4">
+         <property name="text">
+          <string>VideoSignal</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="ith_userbits_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="ith_timecode_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="SetTC_btn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="ith_timecode_label">
+         <property name="text">
+          <string>00:00:00:00</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_115">
+         <property name="text">
+          <string>TimeCode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLabel" name="label_113">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLabel" name="ith_userbits_label">
+         <property name="text">
+          <string>00:00:00:00</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLineEdit" name="ith_interlace_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="ith_videosignal_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="l4_4">
+         <property name="text">
+          <string>FieldNumber</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>TimeOffset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="SetUB_btn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLineEdit" name="ith_padding_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLineEdit" name="ith_hsamplerate_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLineEdit" name="ith_timeoffset_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLineEdit" name="ith_vsamplerate_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_112">
+         <property name="text">
+          <string>UserBits</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>VertSampleRate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLineEdit" name="ith_framerate_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="l12_6">
+         <property name="text">
+          <string>Padding</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="l1_4">
+         <property name="text">
+          <string>Interlace</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QLabel" name="label_40">
+         <property name="text">
+          <string>Reserved</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QLineEdit" name="ith_reserved_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_22">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>30</y>
+        <width>221</width>
+        <height>235</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_22">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="5" column="0">
+        <widget class="QLabel" name="l3_5">
+         <property name="text">
+          <string>IntegrationTimes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="l1_5">
+         <property name="text">
+          <string>BlackGain</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_117">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="l4_5">
+         <property name="text">
+          <string>Breakpoint</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="l12_5">
+         <property name="text">
+          <string>WhiteLevel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="ith_integrationtime_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="ith_blackgain_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="ith_blacklevel_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="ith_whitelevel_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_116">
+         <property name="text">
+          <string>BlackLevel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="ith_breakpoint_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="ith_gamma_tf">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_119">
+         <property name="text">
+          <string>Gamma</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>535</x>
+        <y>30</y>
+        <width>20</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>User Defined</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_20">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>301</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_20">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
+       </property>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_111">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>User Length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="sd">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>User ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="ud_userid_tf">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>32</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="ud_userlength_tf">
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QCheckBox" name="viewhex_cb">
+      <property name="geometry">
+       <rect>
+        <x>44</x>
+        <y>99</y>
+        <width>87</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>View Hex</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="UD_textedit_tf">
+      <property name="geometry">
+       <rect>
+        <x>49</x>
+        <y>132</y>
+        <width>729</width>
+        <height>207</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>971</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>DPX Sequence</string>
+    </property>
+    <widget class="QPushButton" name="openSequenc_BTN">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>131</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Open Sequence</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Frame_spinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>90</y>
+       <width>101</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSlider" name="Frame_horizontalSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>60</y>
+       <width>361</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="numfiles_label">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>90</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lastframe_label">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>70</y>
+       <width>66</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="firstframe_label">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>50</y>
+       <width>66</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="firstframe_label_2">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>50</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>First Frame Index:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lastframe_label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>70</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Last Frame Index:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="numfiles_label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>90</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Number of Files:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="Edit_GB">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>687</x>
+       <y>19</y>
+       <width>263</width>
+       <height>124</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Editor</string>
+     </property>
+     <widget class="QGroupBox" name="edittype_GB">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>40</y>
+        <width>229</width>
+        <height>83</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Edit Type</string>
+      </property>
+      <widget class="QRadioButton" name="editbasic_rb">
+       <property name="geometry">
+        <rect>
+         <x>15</x>
+         <y>20</y>
+         <width>60</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Basic</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="advedit_rb">
+       <property name="geometry">
+        <rect>
+         <x>85</x>
+         <y>20</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Advanced</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="alledit_rb">
+       <property name="geometry">
+        <rect>
+         <x>182</x>
+         <y>20</y>
+         <width>60</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>All</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="writeheaders_btn">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>65</x>
+         <y>45</y>
+         <width>112</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Write Headers</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QCheckBox" name="EnableEditCB">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enable Editing</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="showviewer_btn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>20</y>
+       <width>145</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Show Image Viewer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SetInBtn">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>80</y>
+       <width>72</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Set In</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SetOutBtn">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>115</y>
+       <width>71</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Set Out</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="inlabel">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>90</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="outlabel">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>120</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="current_file_label">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>715</y>
+      <width>811</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Current File:</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>797</x>
+      <y>668</y>
+      <width>184</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>729</x>
+      <y>669</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Progress:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>660</y>
+      <width>235</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/colorlab.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>5</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>5</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>false</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>false</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>
