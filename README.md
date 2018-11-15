@@ -8,6 +8,7 @@ This software originated as an in house Colorlab utility for editing dpx headers
 Mac and Win64 binaries available in the release tab.
 Current Version 
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_Mac_V0_9.zip
+https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_WIN64_V0_9.zip
 
 libdpx is used for header reading. A couple changes to libdpx had to be made to errors in original code.
 
