@@ -1,4 +1,4 @@
-# DPX_Metdata_Editor
+# DPX_Metadata_Editor
 
 V0.9
 
