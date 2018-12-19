@@ -9,6 +9,8 @@ Mac and Win64 binaries available in the release tab.
 Current Version 
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_Mac_V0_9.zip
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_WIN64_V0_9.zip
+The windows version requires msvc 2017 redistributable if is not already installed. It is available here: 
+https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads
 
 libdpx is used for header reading. A couple changes to libdpx had to be made to errors in original code.
 
