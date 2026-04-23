@@ -50,9 +50,9 @@ HEADERS  += mainwindow.h \
     confirmwritedialog.h
 
 macx {
-        LIBS += -L/Users/thomasaschenbach/Downloads/DPX_Metadata_Editor-master/build-DPX-Qt_6_6_2_for_macOS-Debug/
+        LIBS += -L/libdpxpath/
 
-        QMAKE_LIBDIR_FLAGS += -L/usr/local/lib -L/opt/homebrew/lib -L/Users/thomasaschenbach/Downloads/DPX_Metadata_Editor-master/build-DPX-Qt_6_6_2_for_macOS-Debug/
+        QMAKE_LIBDIR_FLAGS += -L/usr/local/lib -L/opt/homebrew/lib -L/libdpxpath/
         QMAKE_RPATHDIR += @executable_path/../Frameworks/
         QMAKE_LINK += -headerpad_max_install_names
 LIBS += -ldpx -lz
