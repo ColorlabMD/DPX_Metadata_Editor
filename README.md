@@ -1,4 +1,19 @@
 # DPX_Metadata_Editor
+V0.95
+
+View, Edit and Modify DPX file headers
+View, Edit and Modify FFV1 rawcooked DPX file headers **** Write rawcooked packed headers at your own risk, if hashed hashes may change *******
+MKVToolNix is neede for ffv1 rawcooked operations. User can set path to the bin. Defaults to homebrew installation on mac /opt/homebrew/bin/
+
+libdpx Updated to accept memory buffer input for header.
+
+Current release (macos arm)
+
+
+
+
+
+
 
 V0.9
 
@@ -6,7 +21,7 @@ View, Edit and Modify DPX file headers
 
 This software originated as an in house Colorlab utility for editing dpx headers.  
 Mac and Win64 binaries available in the release tab.
-Current Version 
+
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_Mac_V0_9.zip
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.9/DPX_Metadata_Editor_WIN64_V0_9.zip
 The windows version requires msvc 2017 redistributable if it is not already installed. It is available here: 
