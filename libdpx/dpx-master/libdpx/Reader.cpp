@@ -91,7 +91,11 @@ bool dpx::Reader::ReadHeader()
 {
 	return this->header.Read(this->fd);
 }
+     bool dpx::Reader::ReadHeader(const uint8_t *data, size_t size)
+{
+        return this->header.Read(data,size);
 
+     }
 
 bool dpx::Reader::ReadImage(const int element, void *data)
 {
@@ -218,9 +222,25 @@ bool dpx::Reader::ReadBlock(void *data, const DataSize size, Block &block, const
 
 	// read the image block
 	return this->codex[element]->Read(this->header, this->rio, element, block, data, size);
-}	
+}
 
 
+bool dpx::Reader::ReadUserData(const uint8_t *bdata, size_t size,unsigned char *data)
+{
+
+    // check to make sure there is some user data
+    if (this->header.UserSize() == 0)
+        return true;
+
+    // seek to the beginning of the user data block
+    size_t offset= sizeof(GenericHeader) + sizeof(IndustryHeader);
+
+    memcpy(data,bdata+offset,this->header.UserSize());
+
+
+    return true;
+
+}
 
 bool dpx::Reader::ReadUserData(unsigned char *data)
 {

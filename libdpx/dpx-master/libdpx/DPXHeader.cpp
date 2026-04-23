@@ -197,7 +197,22 @@ bool dpx::Header::Read(InStream *io)
 	// validate
 	return this->Validate();
 }
+bool dpx::Header::Read(const uint8_t *Data, size_t s)
+{
+    // rewind file
+  //  io->Rewind();
 
+    // read in the header from the file
+    size_t r = sizeof(GenericHeader) + sizeof(IndustryHeader);
+
+    memcpy(&(this->magicNumber),Data, r);
+
+
+      // return false;
+
+    // validate
+    return this->Validate();
+}
 
 // Check to see if the compiler placed the data members in the expected memory offsets
 
@@ -244,7 +259,22 @@ bool dpx::Header::Write(OutStream *io)
 	return true;
 }
 
+bool dpx::Header::Write( uint8_t *Data, size_t s)
+{
+    // validate and byte swap, if necessary
+    if (!this->Validate())
+        return false;
 
+    // write the header to the file
+    size_t r = sizeof(GenericHeader) + sizeof(IndustryHeader);
+
+    memcpy(Data,&this->magicNumber,r);
+
+
+    // swap back - data is in file, now we need it native again
+    this->Validate();
+    return true;
+}
 bool dpx::Header::WriteOffsetData(OutStream *io)
 {
 	// calculate the number of elements

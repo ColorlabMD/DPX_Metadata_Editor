@@ -38,6 +38,7 @@
 // SMPTE DPX graphic file format v2.0
 
 
+#include <cstdint>
 #ifndef _DPX_DPXHEADER_H
 #define _DPX_DPXHEADER_H 1
 
@@ -1420,12 +1421,12 @@ namespace dpx
 		 * \brief Set the Input Stream object to read header from
 		 */
 		bool				Read(InStream *);
-		
+        bool				Read(const uint8_t* Data, size_t size);
 		/*!
 		 * \brief Set the Output Stream object to write header to
 		 */
 		bool				Write(OutStream *);
-		
+        bool Write(uint8_t *Data, size_t s);
 		// write the offset within the header
 		bool				WriteOffsetData(OutStream *);
 	

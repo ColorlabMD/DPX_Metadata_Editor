@@ -213,6 +213,8 @@ namespace dpx
 		 */	
 		bool ReadHeader();
 
+        bool ReadHeader(const uint8_t *data, size_t size);
+
 		/*!
 		 * \brief Read an image element into a buffer
 		 * 
@@ -273,7 +275,8 @@ namespace dpx
 		 * \return success true/false
 		 */	
 		bool ReadUserData(unsigned char *data);
-		
+
+        bool ReadUserData(const uint8_t *bdata, size_t size,unsigned char *data);
 
 	protected:			
 		InStream *fd;
