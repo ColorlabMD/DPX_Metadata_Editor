@@ -24,6 +24,9 @@
 #include "DPXHeader.h"
 #include "DPXHeaderHelper.h"
 
+#include "reversibilityblob_rewrite.h"
+
+
 #define MAX_USER_DATA 16000
 
 enum headerfield {
@@ -133,7 +136,8 @@ public:
     dpx::Reader dpx;
     dpx::Header currentheader;
     dpx::Header currentheader_edited;
-    int firstFrameIndex;
+    std::string currentfile;
+    int firstFrameIndex=0;
     int lastFrameIndex;
     int currentframeindex;
     int  imagewidth;
@@ -145,17 +149,24 @@ public:
 
     QDir dpxdirectory;
     QString basefilename;
+
+    QString blobfilename;
+    ReversibilityBlob rev;
+
+     // RawCookedReversibilityExtractor * extract_rev;
     bool isready;
     int Width();
     int Height();
-
+    bool isBlob = false;
     int NumFrames();
     int FirstFrame();
     int LastFrame();
     QString GetFrameFilename (int index);
     void SetSource(QString filename);
+    void SetSourceMKV(QString filename);
     void GetHeader(int position);
     int ReadFile(int,bool);
+    int ReadBlob(int position,bool readimage);
     int CopyHeaderFieldEdit(headerfield editfield, dpx::Header *dpxo);
     QByteArray userheaderdataedited;
     // int userheadersize;
@@ -191,7 +202,8 @@ public:
     void updateheader_keycodeonly(int fnum,QString  Keycode);
 
     void updateheaders(int fnum);
-
+    void updateheadersMKV(int fnum);
+    void saveMKV();
     void assignheadereditcopy();
 
 

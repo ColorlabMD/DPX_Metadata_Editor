@@ -26,8 +26,8 @@ TCSetDialog::TCSetDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QRegExp tcre ("(\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}\\:\\d{1,2})");
-    QValidator *validator = new QRegExpValidator(tcre, this);
+    QRegularExpression tcre ("(\\d{1,2}\\:\\d{1,2}\\:\\d{1,2}\\:\\d{1,2})");
+    QValidator *validator = new QRegularExpressionValidator(tcre, this);
 
 
     ui->TC_le->setValidator(validator);

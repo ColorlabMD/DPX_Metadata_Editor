@@ -44,12 +44,22 @@
 #include "confirmwritedialog.h"
 #include <keycodedialog.h>
 #include <QMessageBox>
+#include <QSettings>
+
+
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
+
+
     ui->setupUi(this);
+
+
     QMenuBar* m_menuBar = new QMenuBar(this);
 
     QMenu *oneMenu = new QMenu("File");
@@ -141,6 +151,7 @@ void MainWindow::showAbout()
 void MainWindow::on_openSequenc_BTN_clicked()
 {
 
+
     int ft;
 
     QString selectedType = "";
@@ -150,7 +161,8 @@ void MainWindow::on_openSequenc_BTN_clicked()
 
     if(filename.isEmpty()) return;
 
-    QFileInfo finfo = filename;
+
+    QFileInfo finfo(filename);
     dpxsequence.SetSource(filename);
     if(dpxsequence.isready)
     {
@@ -404,8 +416,12 @@ void MainWindow::update_Read_DPX(int position)
     {dpxsequence.ReadFile(position,true);
         dpx_window->ShowFrame(dpxsequence.image);
     }
-    else
+    else{
+        if(!dpxsequence.isBlob)
         dpxsequence.ReadFile(position,false);
+    else
+         dpxsequence.ReadBlob(position,false);
+    }
     ui->UD_textedit_tf->setMaximumBlockCount(dpxsequence.userheadersize-32);
     update_UI_Fields();
 }
@@ -420,6 +436,7 @@ void MainWindow::on_Frame_spinBox_valueChanged(int arg1)
 {
     ui->Frame_horizontalSlider->setValue(arg1);
     update_Read_DPX( arg1);
+
 }
 
 
@@ -492,11 +509,19 @@ void MainWindow::on_writeheaders_btn_clicked()
             for (int i=first; i<=last; i++)
             {
 
-
-
+                if(!dpxsequence.isBlob)
+                {
                 dpxsequence.updateheaders(i);
                 QMetaObject::invokeMethod(this,"progressbarupdate",Qt::ConnectionType::QueuedConnection,Q_ARG(int,i),Q_ARG(int,last));
                 qApp->processEvents();
+                }
+                else
+                {
+                    dpxsequence.updateheadersMKV(i);
+                    QMetaObject::invokeMethod(this,"progressbarupdate",Qt::ConnectionType::QueuedConnection,Q_ARG(int,i),Q_ARG(int,last));
+                    qApp->processEvents();
+
+                }
 
             }
 
@@ -510,6 +535,8 @@ void MainWindow::on_writeheaders_btn_clicked()
             msgBox.setStandardButtons(QMessageBox::Ok);
             msgBox.exec() ;
             ui->progressBar->setEnabled(false);
+            if (dpxsequence.isBlob)
+                dpxsequence.saveMKV();
         }
     }
 
@@ -560,8 +587,12 @@ void MainWindow::close_editmode()
     {
 
         dpx_h_le->setReadOnly(true);
-        setQLineEditTextColor(Qt::black,dpx_h_le);
-        setQLineEditBaseColor(Qt::white,dpx_h_le);
+
+        QPalette pal = qApp->palette();
+        QColor defaultText = pal.color(QPalette::Text);
+        QColor defaultBase = pal.color(QPalette::Base); // Background
+        setQLineEditTextColor(defaultText,dpx_h_le);
+        setQLineEditBaseColor(defaultBase,dpx_h_le);
     }
 
 }
@@ -599,7 +630,7 @@ void MainWindow::on_editbasic_rb_clicked(bool checked)
 }
 void MainWindow::change_textfieldsforedit()
 {
-
+/*
     foreach(QLineEdit* dpx_h_le , header_textfields )
     {
 
@@ -638,7 +669,43 @@ void MainWindow::change_textfieldsforedit()
         }
     }
 
+*/
+    // helper lambda to keep things consistent
+    auto setColors = [](QLineEdit* le, const QColor& bg, const QColor& fg)
+    {
+        QPalette pal = le->palette();
+        pal.setColor(QPalette::Base, bg);
+        pal.setColor(QPalette::Text, fg);
+        le->setPalette(pal);
+    };
 
+    for (QLineEdit* le : header_textfields)
+    {
+        le->setReadOnly(true);
+        setColors(le, Qt::white, Qt::black);
+    }
+
+    auto applyEditable = [&](const QList<QLineEdit*>& list)
+    {
+        for (QLineEdit* le : list)
+        {
+            le->setReadOnly(false);
+            setColors(le, QColor(180, 255, 255), Qt::black); // softer cyan
+        }
+    };
+
+    if (editmode == 1)
+    {
+        applyEditable(header_textfields_normaledit);
+    }
+    else if (editmode == 2)
+    {
+        applyEditable(header_textfields_advedit);
+    }
+    else // mode 3
+    {
+        applyEditable(header_textfields_alledit);
+    }
 
 }
 void MainWindow::begin_editmode (int edit_type)
@@ -754,7 +821,7 @@ void MainWindow::onTextEdit(const QString& text)
     }
 }
 
-void MainWindow::setQLineEditBaseColor(Qt::GlobalColor icolor,QLineEdit * iQLE)
+void MainWindow::setQLineEditBaseColor(QColor icolor,QLineEdit * iQLE)
 {
     iQLE->setAutoFillBackground(true);
     QPalette palette;
@@ -763,7 +830,7 @@ void MainWindow::setQLineEditBaseColor(Qt::GlobalColor icolor,QLineEdit * iQLE)
 
 
 }
-void MainWindow::setQLineEditTextColor(Qt::GlobalColor icolor,QLineEdit * iQlE)
+void MainWindow::setQLineEditTextColor(QColor icolor,QLineEdit * iQlE)
 {
 
     QPalette palette;
@@ -2436,7 +2503,10 @@ void MainWindow::on_UD_textedit_tf_textChanged()
     else
     {
         QPalette palette;
-        palette.setColor(QPalette::Text,Qt::black);
+        palette=qApp->palette();
+
+
+
         ui->UD_textedit_tf->setPalette(palette);
         dpxsequence.changelist.remove(headerfield::userdata);
     }
@@ -2505,7 +2575,9 @@ void MainWindow::on_gfh_reserved_tf_textEdited(const QString &arg1)
     }
     else
     {
-        setQLineEditTextColor(Qt::black,edit);
+        QPalette pal = qApp->palette();
+        QColor defaultText = pal.color(QPalette::Text);
+        setQLineEditTextColor(defaultText,edit);
         dpxsequence.changelist.remove(headerfield::reserved1);
     }
 }
@@ -2698,3 +2770,94 @@ void MainWindow::on_Setfposifh_btn_clicked()
 
 
 }
+
+void MainWindow::on_openSequenc_BTN_2_clicked()
+{
+
+
+    int ft;
+
+    QString selectedType = "";
+    QString filename = QFileDialog::getOpenFileName(this,
+                                                    tr("Blob Source"), "/",
+                                                    tr("rawcooked FIles (*.mkv)"));
+
+    if(filename.isEmpty()) return;
+
+    dpxsequence.SetSourceMKV(filename);
+    if(dpxsequence.isready)
+    {
+
+        ui->outlabel->setText(  QString::number(markeroutframe));
+        ui->inlabel->setText(QString::number(markerinframe));
+        //  this->scan.SourceScan(filename.toStdString(),fileFilterArr[ft].fileType);
+
+
+        ui->Frame_horizontalSlider->setMinimum(dpxsequence.firstFrameIndex);
+        ui->Frame_horizontalSlider->setMaximum(dpxsequence.lastFrameIndex);
+        ui->Frame_spinBox->setRange(dpxsequence.firstFrameIndex,dpxsequence.lastFrameIndex);
+        ui->numfiles_label->setText(QString::number(dpxsequence.NumFrames()));
+        ui->firstframe_label->setText(QString::number(dpxsequence.FirstFrame()));
+        ui->lastframe_label->setText(QString::number(dpxsequence.LastFrame()));
+        markerinframe = dpxsequence.FirstFrame();
+        markeroutframe = dpxsequence.LastFrame();
+        ui->inlabel->setText(QString::number( markerinframe));
+        ui->outlabel->setText(QString::number( markeroutframe));
+        update_Read_DPX(dpxsequence.FirstFrame());
+        ui->Frame_horizontalSlider->setEnabled(true);
+        ui->Frame_spinBox->setEnabled(true);
+        ui->showviewer_btn->setEnabled(false);
+
+        ui->Edit_GB->setEnabled(true);
+
+
+
+    }
+    else
+    {
+        ui->Frame_horizontalSlider->setEnabled(false);
+        ui->Frame_spinBox->setEnabled(false);
+        ui->showviewer_btn->setEnabled(false);
+
+        ui->Edit_GB->setEnabled(false);
+
+    }
+    update_UI_Fields();
+
+
+}
+
+
+void MainWindow::on_mkvtoolnixpath_button_clicked()
+{
+    QDialog dialog(this);
+    dialog.setWindowTitle("Edit mkvtoolnix path");
+
+    auto *layout = new QVBoxLayout(&dialog);
+
+    auto *label = new QLabel("Path to mkvtoolnix:", &dialog);
+    auto *lineEdit = new QLineEdit(&dialog);
+ // preload current value
+    QSettings settings("Colorlab", "DPX_Metadata_Editor");
+    lineEdit->setText(settings.value("env/PATH", "").toString());
+    auto *buttons = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+        &dialog
+        );
+
+    layout->addWidget(label);
+    layout->addWidget(lineEdit);
+    layout->addWidget(buttons);
+
+    connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted)
+
+        {
+            QSettings settings("Colorlab", "DPX_Metadata_Editor");
+            settings.setValue("env/PATH", lineEdit->text());
+        }
+
+}
+

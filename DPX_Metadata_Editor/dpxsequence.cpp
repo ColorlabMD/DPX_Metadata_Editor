@@ -19,7 +19,10 @@
 #include "dpxsequence.h"
 #include "QMessageBox"
 #include "QDebug"
-
+#include   <QRegularExpression>
+#include <QBuffer>
+#include <QSettings>
+#include <QTemporaryFile>
 #define UINT_10_TO_8(val) \
     (int)(((float)(val & 0x3FF) * (float)(0xFF)) / (float)(0x3FF))
 
@@ -27,12 +30,40 @@
     (uint32_t)(((val & 0xFF000000)>>24) | ((val & 0xFF0000) >> 8) | \
     ((val & 0xFF00) << 8) | ((val & 0xFF) << 24))
 
+QString getUserPath()
+{
+    QSettings settings("Colorlab", "DPX_Metadata_Editor");
+    return settings.value("env/PATH", "").toString();
+}
+
+void setUserPath(const QString& path)
+{
+    QSettings settings("Colorlab", "DPX_Metadata_Editor");
+    settings.setValue("env/PATH", path);
+}
 
 DPXSequence::DPXSequence()
 {
 
     isready=false;
     autofilename_edit=false;
+}
+void DPXSequence::SetSourceMKV(QString filename)
+{    if( getUserPath().isEmpty())
+        setUserPath("/opt/homebrew/bin/");
+
+
+
+     rev.Load(filename.toStdString(),getUserPath().toStdString());
+    isBlob=true;
+
+    numframes=(rev.GetFrameCount());
+    firstFrameIndex=0;
+    ReadBlob(0,false);
+
+    firstFrameIndex= currentheader.framePosition; //firstfile.toInt();
+    lastFrameIndex= firstFrameIndex+(numframes-1);
+    isready=true;
 }
 
 void DPXSequence::SetSource(QString filename)
@@ -42,8 +73,8 @@ void DPXSequence::SetSource(QString filename)
 
     basefilename = filename.mid(filename.lastIndexOf("/")+1);
     basefilename =basefilename.mid(0,basefilename.length()-4);
-    QRegExp ra("\\D");
-    QRegExp rn("[A-Z]");
+    QRegularExpression ra("\\D");
+    QRegularExpression rn("[A-Z]");
 
     basefilename= basefilename.mid(0,basefilename.lastIndexOf(ra)+1);//selected file base name
 
@@ -162,6 +193,21 @@ QString  DPXSequence::computecurrentkeycode(int fnum)
 
 
 }
+ void DPXSequence::saveMKV()
+{
+     QTemporaryFile tblob;
+     tblob.setAutoRemove(true);
+
+     if (!tblob.open())
+         return;
+
+     QString path = tblob.fileName();
+     tblob.close();  // <-- important for Windows compatibility
+
+     rev.SaveModified(path.toStdString(),getUserPath().toStdString());
+     rev.Inject(path.toStdString(),getUserPath().toStdString());
+
+ }
 QString   DPXSequence::computecurrenttimecode(int fnum)
 {
 
@@ -176,7 +222,7 @@ QString   DPXSequence::computecurrenttimecode(int fnum)
 
 
 
-    QStringList TCL =  timecodeeditstring.split(QRegExp("[:]"),QString::SkipEmptyParts);
+    QStringList TCL =  timecodeeditstring.split(QRegularExpression("[:]"),Qt::SkipEmptyParts);
     sec =(((TCL[0].toInt() * 3600 )+ (TCL[1].toInt()* 60)+TCL[2].toInt()));
     frames = TCL[3].toInt() +fnum-timecodeeditfnum;
     totalframes = frames+(sec*fps_timebase);
@@ -222,7 +268,11 @@ int DPXSequence::Height()
 }
 int DPXSequence::NumFrames()
 {
+    if(!isBlob)
     return dpxfiles.count();
+    else {
+        return numframes;
+    }
 }
 int DPXSequence::FirstFrame()
 {
@@ -234,7 +284,10 @@ int DPXSequence::LastFrame()
 }
 QString DPXSequence::GetFrameFilename(int index)
 {
+    if (!isBlob)
     return dpxdirectory.path()+"/"+ dpxfiles[index-firstFrameIndex];
+    else
+        return QString::fromStdString(currentfile);
 }
 InStream img;
 OutStream imgo;
@@ -336,13 +389,93 @@ int DPXSequence::ReadFile(int position,bool readimage)
 
 
 }
+int DPXSequence::ReadBlob(int position,bool readimage)
+{
+    currentframeindex=position-firstFrameIndex;
+
+        buffer before = rev.GetBeforeData(currentframeindex);
+
+
+    if(!dpx.ReadHeader((before.Data()), before.Size()))
+    {
+     //   img.Close();
+        QString msg;
+        msg += "ReadFrameDPX_ImageData: Cannot parse DPX header of  ";
+        //msg += filename;
+        msg += "\n";
+        //if(errno) msg += strerror(errno);
+        //throw AeoException(msg);
+        return -1;
+    }
+    currentheader = dpx.header;
+     buffer filename = rev.GetFileNameChunk(currentframeindex);
+    currentfile=std::string (filename.begin(),filename.end());
+
+    //unsigned char * ud = new unsigned char[dpxsequence.currentheader.userSize];
+    userheadersize=currentheader.userSize;
+    if (userheadersize<32)
+        hasuserdata=false;
+    else
+    {
+        userheaderdata =  QByteArray(userheadersize,0);
+
+
+        dpx.ReadUserData(before.Data(), before.Size(),(unsigned char *)userheaderdata.data());
+        hasuserdata=true;
+    }
+    if(readimage)
+    {
+        if (currentheader.chan[0].bitDepth==10 && currentheader.chan[0].descriptor ==50)
+        {
+
+            uint32_t imaggedatasize;
+
+
+            imaggedatasize = imagewidth * imageheight *4;
+            img.Seek(currentheader.chan[0].dataOffset,InStream::Origin());
+            img.Read(image->bits(), imagewidth * imageheight *4);
+            uint32_t* pData = (uint32_t*)image->bits();
+            uint32_t pval;
+            int nCount = imagewidth * imageheight;
+            bool fb = currentheader.DatumSwap(0);
+            for (int i = 0; i < nCount; i++)
+            {
+                pval = *pData;
+                if(fb)
+                    pval=  FLIP32(pval);
+                pval >>= 2;
+                pval+=0xC0000000;
+                *pData++=pval;
+
+            }
+        }
+
+        else
+        {
+
+            dpx.ReadImage(image->bits(),dpx::DataSize::kByte,dpx::Descriptor::kRGB);
+
+
+        }
+    }
+
+
+
+
+
+
+    img.Close();
+    dpx.~Reader();
+
+
+}
 void DPXSequence::validateheaders()
 {
 
     for (int i=firstFrameIndex; i<lastFrameIndex+1; i++)
     {
         ReadFile(i, false);
-        qDebug()<<"Filename Name Field "<<QString::fromUtf8(currentheader.fileName)<< "Real Name "<< dpxfiles[i-firstFrameIndex];
+       // qDebug()<<"Filename Name Field "<<QString::fromUtf8(currentheader.fileName)<< "Real Name "<< dpxfiles[i-firstFrameIndex];
         // Check Items that are validatable via file and sequence knowledge
         if (QString::fromUtf8(currentheader.fileName) != dpxfiles[i-firstFrameIndex] )
         {
@@ -411,6 +544,97 @@ void DPXSequence::updateheader_keycodeonly(int fnum,QString  Keycode)
     dpxo.WriteHeader();
 
     imgo.Close();
+
+
+
+
+}
+void DPXSequence::updateheadersMKV(int fnum)
+{
+    int framnum=fnum-firstFrameIndex;
+     dpx::Reader dpx;
+    buffer before = rev.GetBeforeData(framnum);
+
+
+    if(!dpx.ReadHeader((before.Data()), before.Size()))
+    {
+        //   img.Close();
+        QString msg;
+        msg += "ReadFrameDPX_ImageData: Cannot parse DPX header of  ";
+        //msg += filename;
+        msg += "\n";
+        //if(errno) msg += strerror(errno);
+        //throw AeoException(msg);
+
+    }
+
+
+
+    //unsigned char * ud = new unsigned char[dpxsequence.currentheader.userSize];
+    userheadersize=dpx.header.userSize;
+    if (userheadersize<32)
+        hasuserdata=false;
+    else
+    {
+        userheaderdata =  QByteArray(userheadersize,0);
+
+
+        dpx.ReadUserData(before.Data(), before.Size(),(unsigned char *)userheaderdata.data());
+        hasuserdata=true;
+    }
+
+
+    foreach (headerfield hf , changelist)
+    {
+        CopyHeaderFieldEdit(hf,&dpx.header);
+    }
+    if (changelist.contains(headerfield::timeCode))
+    {
+
+        dpx.header.SetTimeCode(computecurrenttimecode(fnum).toStdString().c_str());
+    }
+    if (changelist.contains(headerfield::keycode))
+    {
+
+        dpx.header.SetFileEdgeCode(computecurrentkeycode(fnum).toStdString().c_str());
+    }
+    if (changelist.contains(headerfield::framePosition))
+    {
+
+
+        dpx.header.SetFramePosition(((fnum - framepositionorig)+framepositionedit));
+    }
+    if (changelist.contains(headerfield::fileName) && autofilename_edit)
+    {
+
+        dpx.header.SetFileName(dpxfiles[fnum-firstFrameIndex].toStdString().c_str());
+    }
+    if (changelist.contains(headerfield::userid) && hasuserdata)
+    {
+        // userheaderdata.(0,userid_edit.leftJustified(32,' '));
+
+        strcpy(userheaderdata.data(),userid_edit.toStdString().c_str()) ;  // Qt(ss,ss,2);
+        //  userheaderdata.(0x0,32-userid_edit.length());
+        memset(userheaderdata.data()+userid_edit.length(),char(0),32-userid_edit.length());
+       // dpxo.WriteUserData(userheaderdata.data());
+
+        //  dpxo.header.SetFileName(dpxfiles[fnum-firstFrameIndex].toStdString().c_str());
+    }
+    if (changelist.contains(headerfield::userdata) && hasuserdata)
+    {
+        // userheaderdata.(0,userid_edit.leftJustified(32,' '));
+
+        strcpy(userheaderdata.data()+32,userdata_edit.toStdString().c_str()) ;  // Qt(ss,ss,2);
+        //  userheaderdata.(0x0,32-userid_edit.length());
+        memset(userheaderdata.data()+32+userdata_edit.length(),char(0),userheadersize-32-userdata_edit.length());
+      //  dpxo.WriteUserData(userheaderdata.data());
+
+        //  dpxo.header.SetFileName(dpxfiles[fnum-firstFrameIndex].toStdString().c_str());
+    }
+ //  se &dpx.header.magicNumber
+   // &(this->magicNumber)
+    dpx.header.Write(before.data(), before.Size());
+    rev.SetBeforeData(framnum,before);
 
 
 
@@ -843,5 +1067,3 @@ int DPXSequence::CopyHeaderFieldEdit(headerfield editfield ,dpx::Header *dpxo)
     }
     return 1;
 }
-
-

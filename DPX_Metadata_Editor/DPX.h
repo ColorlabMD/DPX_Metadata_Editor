@@ -210,7 +210,7 @@ InStream *fd;
 		 * \return success true/false
 		 */	
 		bool ReadHeader();
-
+         bool ReadHeader(const uint8_t*,size_t);
 		/*!
 		 * \brief Read an image element into a buffer
 		 * 
@@ -271,7 +271,7 @@ InStream *fd;
 		 * \return success true/false
 		 */	
 		bool ReadUserData(unsigned char *data);
-		
+        bool ReadUserData(const uint8_t *bdata, size_t size,unsigned char *data);
 
 	protected:			
 

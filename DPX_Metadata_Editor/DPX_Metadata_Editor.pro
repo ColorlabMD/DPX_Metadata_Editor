@@ -9,7 +9,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
-VERSION = 0.9.0.0
+VERSION = 0.9.5.0
 macx {ICON = DPX_ICON.icns}
 
 
@@ -26,11 +26,13 @@ SOURCES += main.cpp\
     dpxviewer.cpp \
     keycodedialog.cpp \
     dpxsequence.cpp \
+    rawcookedreversibilityextractor.cpp \
+    reversibilityblob_rewrite.cpp \
     tcsetdialog.cpp \
     confirmwritedialog.cpp
 
 
-INCLUDEPATH += $$PWD/
+INCLUDEPATH += $$PWD/ /opt/homebrew/include/
 DEPENDPATH += $$PWD/
 
 HEADERS  += mainwindow.h \
@@ -42,15 +44,18 @@ HEADERS  += mainwindow.h \
     dpxviewer.h \
     keycodedialog.h \
     dpxsequence.h \
+    rawcookedreversibilityextractor.h \
+    reversibilityblob_rewrite.h \
     tcsetdialog.h \
     confirmwritedialog.h
 
 macx {
-        LIBS += -L/usr/local/lib
-        QMAKE_LIBDIR_FLAGS += -L/usr/local/lib -L/opt/local/lib
+        LIBS += -L/Users/thomasaschenbach/Downloads/DPX_Metadata_Editor-master/build-DPX-Qt_6_6_2_for_macOS-Debug/
+
+        QMAKE_LIBDIR_FLAGS += -L/usr/local/lib -L/opt/homebrew/lib -L/Users/thomasaschenbach/Downloads/DPX_Metadata_Editor-master/build-DPX-Qt_6_6_2_for_macOS-Debug/
         QMAKE_RPATHDIR += @executable_path/../Frameworks/
         QMAKE_LINK += -headerpad_max_install_names
-LIBS += -ldpx
+LIBS += -ldpx -lz
 }
 win32 {
  QMAKE_LIBDIR += "C:\LIBDPX"

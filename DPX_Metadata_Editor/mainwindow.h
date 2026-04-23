@@ -48,8 +48,8 @@ public:
     void showAbout();
     void reset_texfields();
     void  updateheader(int fnum);
-    void setQLineEditBaseColor(Qt::GlobalColor, QLineEdit *iQLE);
-    void setQLineEditTextColor(Qt::GlobalColor,QLineEdit *);
+    void setQLineEditBaseColor(QColor, QLineEdit *iQLE);
+    void setQLineEditTextColor(QColor, QLineEdit *);
     void assignQLEValidators();
     void close_editmode ();
     void begin_editmode (int edit_type);
@@ -290,6 +290,10 @@ private slots:
 
 
     void on_Setfposifh_btn_clicked();
+
+    void on_openSequenc_BTN_2_clicked();
+
+    void on_mkvtoolnixpath_button_clicked();
 
 private:
     Ui::MainWindow *ui;

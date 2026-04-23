@@ -2352,8 +2352,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>142</x>
-       <y>20</y>
+       <x>469</x>
+       <y>22</y>
        <width>145</width>
        <height>32</height>
       </rect>
@@ -2420,6 +2420,19 @@
       <string>0</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="openSequenc_BTN_2">
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>22</y>
+       <width>158</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Open MKV(rawcooked)</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="current_file_label">
     <property name="geometry">
@@ -2477,6 +2490,19 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mkvtoolnixpath_button">
+    <property name="geometry">
+     <rect>
+      <x>153</x>
+      <y>28</y>
+      <width>158</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set mkvtoolnix path</string>
     </property>
    </widget>
   </widget>
