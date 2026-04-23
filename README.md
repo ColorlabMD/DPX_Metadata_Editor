@@ -5,8 +5,10 @@ View, Edit and Modify DPX file headers.
 View, Edit and Modify FFV1 rawcooked DPX file headers **** Write rawcooked packed headers at your own risk *******
 
 
-To install MKVToolNix with homebrew: brew install mkvtoolnix/n
+To install MKVToolNix with homebrew: brew install mkvtoolnix
+
 User can set path to the MKVToolNix bin. Defaults to homebrew installation on mac /opt/homebrew/bin/
+
 libdpx Updated to accept memory buffer input for header.
 
 Current release (macos arm) **MKVToolNix is required for ffv1 rawcooked operations**
