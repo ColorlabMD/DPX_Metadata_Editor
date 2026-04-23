@@ -3,11 +3,11 @@ V0.95
 
 View, Edit and Modify DPX file headers. 
 View, Edit and Modify FFV1 rawcooked DPX file headers **** Write rawcooked packed headers at your own risk *******
-**MKVToolNix is required for ffv1 rawcooked operations**. User can set path to the bin. Defaults to homebrew installation on mac /opt/homebrew/bin/
+. User can set path to the bin. Defaults to homebrew installation on mac /opt/homebrew/bin/
 To install MKVToolNix with homebrew: brew install mkvtoolnix
 libdpx Updated to accept memory buffer input for header.
 
-Current release (macos arm)
+Current release (macos arm) **MKVToolNix is required for ffv1 rawcooked operations**
 
 https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.95/DPX_Metadata_Editor.zip
 
