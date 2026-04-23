@@ -9,8 +9,7 @@ libdpx Updated to accept memory buffer input for header.
 
 Current release (macos arm)
 
-
-
+https://github.com/ColorlabMD/DPX_Metadata_Editor/releases/download/0.95/DPX_Metadata_Editor.zip
 
 
 
